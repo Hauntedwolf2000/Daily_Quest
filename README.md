@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+**as it requires server-side storage for saving files (like images, videos, and JSON),
+ and Vercel's serverless environment does not support persistent file storage.**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I have uploaded the full source code to GitHub, which you can easily install and run locally.
+The project is divided into two parts:
 
-## Available Scripts
+Backend: Built with Node.js and Express.js, handling API endpoints, file uploads (via multer), and saving JSON, images, and videos. please find the here : https://github.com/Hauntedwolf2000/Daily_Quest_Backend.git
 
-In the project directory, you can run:
+The backend also includes a Resources folder where all uploaded images (Img) and videos (Video) are saved, which are later rendered in the "Attend Test" page.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend: A React app for uploading Excel sheets, converting them into JSON format, and managing uploaded resources. please find the link here: https://github.com/Hauntedwolf2000/Daily_Quest.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+🔧 Installation Steps:
+Clone the Repository
 
-### `npm test`
+git clone [repo-link]
+cd [repo-name]
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Install Backend Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd Backend
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Start the Backend Server
+node server.js
+(Server will run on http://localhost:5000)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Clone and Install Frontend Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+git clone [repo-link]
+cd [repo-name]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+cd ../Frontend
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Start the Frontend React App
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+npm start
+(App will run on http://localhost:3000) 
