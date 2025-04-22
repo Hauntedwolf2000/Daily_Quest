@@ -9,6 +9,32 @@ const Upload = () => {
   const [jsonData, setJsonData] = useState(null);
   const navigate = useNavigate();
 
+  const handleDeleteAll = async () => {
+    if (window.confirm('Are you sure you want to delete all questions, images, and videos?')) {
+      try {
+        const response = await fetch('http://localhost:5000/delete-all', {  // Removed /api
+          method: 'DELETE',
+        });
+  
+        if (response.ok) {
+          setMessage("✅ All files deleted successfully!");
+          setJsonData(null); // Clear JSON view too
+          setFile(null);     // Reset uploaded file
+          navigate("/go-back");
+        } else {
+          setMessage("❌ Failed to delete files.");
+         
+        }
+      } catch (error) {
+        console.error(error);
+        setMessage("❌ Error deleting files.");
+        
+      }
+    }
+  };
+  
+  
+
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
     setMessage("");
@@ -106,26 +132,8 @@ const Upload = () => {
         >
           Convert
         </button>
-        <div className="items-center  justify-center ">
-        <Link to="/zip">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded mb-4 w-full disabled:opacity-50">
-              Upload Zip Files
-            </button>
-          </Link>
 
-        </div>
-        
-      </form>
-
-      {message && (
-        <div
-          className={`text-lg text-center ${message.includes("❌") ? "text-red-600" : "text-green-600"} mb-4`}
-        >
-          {message}
-        </div>
-      )}
-
-      {/* Display the converted JSON data */}
+        {/* Display the converted JSON data */}
       {jsonData && (
         <div className="mt-6 p-4 bg-white rounded shadow-md w-full max-w-md">
           <h2 className="text-xl font-semibold mb-2">Converted JSON Data</h2>
@@ -142,6 +150,35 @@ const Upload = () => {
           Save
         </button>
       )}
+
+
+        <div className="flex gap-4 pt-4 justify-center">
+        <Link to="/zip">
+            <button className="bg-blue-600 hover:bg-blue-700 rounded-lg text-white px-6 py-2 rounded mb-4 w-full disabled:opacity-50">
+              Upload Zip Files
+            </button>
+          </Link>
+          <Link to="">
+          <button
+           onClick={handleDeleteAll}
+          className="px-6 py-2 bg-red-600 text-white rounded-lg shadow hover:bg-red-700 transition"
+          >
+          Delete all files
+          </button>
+          </Link>
+      </div>
+        
+      </form>
+
+      {message && (
+        <div
+          className={`text-lg text-center ${message.includes("❌hg") ? "text-red-600" : "text-green-600"} mb-4`}
+        >
+          {message}
+        </div>
+      )}
+
+      
     </div>
   );
 };

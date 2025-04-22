@@ -17,6 +17,7 @@ const MainPage = () => {
           </button>
         </Link>
       </div>
+      
     </div>
   )
 }

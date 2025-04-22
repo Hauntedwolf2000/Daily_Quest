@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import JSZip from "jszip";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const UploadZip = () => {
   const [file, setFile] = useState(null);
   const [message, setMessage] = useState("");
   const [extractedData, setExtractedData] = useState(null);
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -65,6 +66,7 @@ const UploadZip = () => {
   
       if (response.ok) {
         setMessage("✅ Files successfully uploaded and saved!");
+        navigate("/go-back");
       } else {
         setMessage("❌ Error uploading the file.");
       }
@@ -128,19 +130,12 @@ const UploadZip = () => {
       {extractedData && (
         <button
           onClick={handleSave}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded mt-4 w-full disabled:opacity-50"
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded mt-4 disabled:opacity-50"
         >
           Save Files
         </button>
       )}
 
-      <div className="items-center justify-center pt-4 px-40">
-        <Link to="/">
-          <button className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow transition">
-            Go Back
-          </button>
-        </Link>
-      </div>
     </div>
   );
 };
