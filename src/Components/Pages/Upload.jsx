@@ -8,11 +8,12 @@ const Upload = () => {
   const [message, setMessage] = useState("");
   const [jsonData, setJsonData] = useState(null);
   const navigate = useNavigate();
+  const BASE_URL = 'https://daily-quest-backend.vercel.app';
 
   const handleDeleteAll = async () => {
     if (window.confirm('Are you sure you want to delete all questions, images, and videos?')) {
       try {
-        const response = await fetch('http://localhost:5000/delete-all', {  // Removed /api
+        const response = await fetch(`${BASE_URL}/api/delete-all`, {  // Removed /api
           method: 'DELETE',
         });
   
@@ -94,7 +95,7 @@ const Upload = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/save-questions", {
+      const response = await fetch(`${BASE_URL}/save-questions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
