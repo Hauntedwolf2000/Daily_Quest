@@ -60,7 +60,7 @@ const UploadZip = () => {
     formData.append("zipFile", file); // same name as multer expects
   
     try {
-      const response = await fetch(`${BASE_URL}/upload-zip`, {
+      const response = await fetch(`${BASE_URL}/api/upload-zip`, {
         method: "POST",
         body: formData, // ✅ NO Content-Type manually
       });

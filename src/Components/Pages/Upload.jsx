@@ -95,7 +95,7 @@ const Upload = () => {
     }
 
     try {
-      const response = await fetch(`${BASE_URL}/save-questions`, {
+      const response = await fetch(`${BASE_URL}/api/save-questions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
