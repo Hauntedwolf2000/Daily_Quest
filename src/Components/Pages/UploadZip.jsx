@@ -7,7 +7,7 @@ const UploadZip = () => {
   const [message, setMessage] = useState("");
   const [extractedData, setExtractedData] = useState(null);
   const navigate = useNavigate();
-  const BASE_URL = 'https://daily-quest-backend.vercel.app';
+  const BASE_URL = 'http://localhost:5000';
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -60,7 +60,7 @@ const UploadZip = () => {
     formData.append("zipFile", file); // same name as multer expects
   
     try {
-      const response = await fetch(`${BASE_URL}/api/upload-zip`, {
+      const response = await fetch(`${BASE_URL}/upload-zip`, {
         method: "POST",
         body: formData, // ✅ NO Content-Type manually
       });

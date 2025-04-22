@@ -8,12 +8,12 @@ const Upload = () => {
   const [message, setMessage] = useState("");
   const [jsonData, setJsonData] = useState(null);
   const navigate = useNavigate();
-  const BASE_URL = 'https://daily-quest-backend.vercel.app/api';
+  const BASE_URL = 'http://localhost:5000';
 
   const handleDeleteAll = async () => {
     if (window.confirm('Are you sure you want to delete all questions, images, and videos?')) {
       try {
-        const response = await fetch(`${BASE_URL}/delete-all`, {  // Removed /api
+        const response = await fetch(`${BASE_URL}/api/delete-all`, {  // Updated to include /api
           method: 'DELETE',
         });
   
@@ -24,15 +24,14 @@ const Upload = () => {
           navigate("/go-back");
         } else {
           setMessage("❌ Failed to delete files.");
-         
         }
       } catch (error) {
         console.error(error);
         setMessage("❌ Error deleting files.");
-        
       }
     }
   };
+  
   
   
 
